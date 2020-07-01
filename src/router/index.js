@@ -2,13 +2,30 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/login/Login.vue'
 import Home from '../views/home/Home.vue'
+import UserList from '../views/userManager/UserList.vue'
 
 Vue.use(VueRouter)
+
+// 解决重复点击路由报错
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush
+    .call(this, location)
+    .catch(err => err)
+}
 
 const routes = [
   { path: '/', redirect: '/login' },
   { path: '/login', component: Login },
-  { path: '/home', component: Home }
+  {
+    path: '/home',
+    component: Home,
+    redirect: '/users',
+    children: [{
+      path: '/users',
+      component: UserList
+    }]
+  }
 ]
 
 const router = new VueRouter({
