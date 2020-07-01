@@ -4,33 +4,29 @@
       <div class="avatar_box">
         <img src="../../assets/logo.png" />
       </div>
-        <el-form
-          class="login_form"
-          :model="userForm"
-          :rules="rules"
-          ref='loginFormRef'>
-          <el-form-item prop="username">
-            <el-input
-              v-model="userForm.username"
-              prefix-icon='el-icon-user-solid'
-              placeholder="请输入用户名"
-              clearable>
-            </el-input>
-          </el-form-item>
-          <el-form-item prop="password">
-            <el-input
-              v-model="userForm.password"
-              prefix-icon="el-icon-lock"
-              placeholder="请输入密码"
-              show-password
-              clearable>
-            </el-input>
-          </el-form-item>
-          <el-form-item class="login_btns">
-            <el-button type="primary" @click="loginBtn">登录</el-button>
-            <el-button type="info" @click="resetFormBtn">重置</el-button>
-          </el-form-item>
-        </el-form>
+      <el-form class="login_form" :model="userForm" :rules="rules" ref="loginFormRef">
+        <el-form-item prop="username">
+          <el-input
+            v-model="userForm.username"
+            prefix-icon="el-icon-user-solid"
+            placeholder="请输入用户名"
+            clearable
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            v-model="userForm.password"
+            prefix-icon="el-icon-lock"
+            placeholder="请输入密码"
+            show-password
+            clearable
+          ></el-input>
+        </el-form-item>
+        <el-form-item class="login_btns">
+          <el-button type="primary" @click="loginBtn">登录</el-button>
+          <el-button type="info" @click="resetFormBtn">重置</el-button>
+        </el-form-item>
+      </el-form>
     </div>
   </div>
 </template>
@@ -40,24 +36,26 @@ import net from '../../network/userNetRequest'
 
 export default {
   name: 'Login',
-  data () {
+  data() {
     return {
       userForm: {
         username: 'admin',
         password: '123456'
       },
       rules: {
-        username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+        username: [
+          { required: true, message: '请输入用户名', trigger: 'blur' }
+        ],
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
       }
     }
   },
   methods: {
-    resetFormBtn () {
+    resetFormBtn() {
       // 重置表单。获取表单实例：this.$refs.loginFormRef
       this.$refs.loginFormRef.resetFields()
     },
-    loginBtn () {
+    loginBtn() {
       this.$refs.loginFormRef.validate(valid => {
         if (valid) {
           this.login()
@@ -66,8 +64,9 @@ export default {
         }
       })
     },
-    login () {
-      net.login(this.userForm.username, this.userForm.password)
+    login() {
+      net
+        .login(this.userForm.username, this.userForm.password)
         .then(res => {
           const { data, meta } = res.data
           if (meta.status !== 200) {
@@ -84,7 +83,6 @@ export default {
           this.$message.error(err)
         })
     }
-
   }
 }
 </script>
@@ -124,14 +122,14 @@ export default {
   border-radius: 50%;
   background-color: #eee;
 }
-.login_form{
+.login_form {
   position: absolute;
   bottom: 0;
   padding: 0 20px;
   width: 100%;
   box-sizing: border-box;
 }
-.login_btns{
+.login_btns {
   display: flex;
   justify-content: flex-end;
 }

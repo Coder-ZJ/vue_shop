@@ -1,4 +1,4 @@
-import { getRequest, postRequest } from '../network/baseNetRequest'
+import { postRequest } from '../network/baseNetRequest'
 
 export default {
   // 登录
