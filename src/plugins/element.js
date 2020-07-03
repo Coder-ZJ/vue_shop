@@ -1,7 +1,7 @@
 // 按需引入 element-ui 组件
 
 import Vue from 'vue'
-import { Button, Form, FormItem, Input, Message, Container, Header, Aside, Main, Footer, Menu, MenuItem, Submenu, Breadcrumb, BreadcrumbItem, Card, Row, Col, Table, TableColumn, Pagination, Switch, Tooltip, Dialog, MessageBox, Select, Option } from 'element-ui'
+import { Button, Form, FormItem, Input, Message, Container, Header, Aside, Main, Footer, Menu, MenuItem, Submenu, Breadcrumb, BreadcrumbItem, Card, Row, Col, Table, TableColumn, Pagination, Switch, Tooltip, Dialog, MessageBox, Select, Option, Tag, Tree } from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Form)
@@ -28,6 +28,8 @@ Vue.use(Tooltip)
 Vue.use(Dialog)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Tag)
+Vue.use(Tree)
 
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm

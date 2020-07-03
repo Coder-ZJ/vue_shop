@@ -7,7 +7,7 @@
       <el-breadcrumb-item>用户列表</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 卡片视图 -->
-    <el-card class="box-card">
+    <el-card>
       <!-- 搜索框 -->
       <el-row :gutter="20">
         <el-col :span="8">
