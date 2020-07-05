@@ -37,5 +37,42 @@ export default {
         .then(res => resolve(res))
         .catch(err => reject(err))
     })
+  },
+
+  // 获取分类参数列表
+  getCateParamsList(id, sel) {
+    return new Promise((resolve, reject) => {
+      getRequest(`categories/${id}/attributes`, { sel })
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+    })
+  },
+
+  // 添加动态参数或静态属性
+  addParams(id, params) {
+    return new Promise((resolve, reject) => {
+      postRequest(`categories/${id}/attributes`, params)
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+    })
+  },
+
+  // 编辑动态参数或静态属性
+  editParams(id, attrId, params) {
+    return new Promise((resolve, reject) => {
+      putRequest(`categories/${id}/attributes/${attrId}`, params)
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+    })
+  },
+
+  // 删除动态参数或静态属性
+  removeParams(id, attrId) {
+    return new Promise((resolve, reject) => {
+      deleteRequest(`categories/${id}/attributes/${attrId}`)
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+    })
   }
+
 }

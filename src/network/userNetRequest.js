@@ -14,7 +14,7 @@ export default {
   // 获取菜单
   getMenus: () => {
     return new Promise((resolve, reject) => {
-      getRequest('menus', {})
+      getRequest('menus')
         .then(res => resolve(res))
         .catch(err => reject(err))
     })
