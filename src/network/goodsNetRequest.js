@@ -73,6 +73,32 @@ export default {
         .then(res => resolve(res))
         .catch(err => reject(err))
     })
-  }
+  },
 
+  // 获取商品列表
+  getGoodsList(params) {
+    return new Promise((resolve, reject) => {
+      getRequest('goods', params)
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+    })
+  },
+
+  // 删除商品
+  removeGoods(id) {
+    return new Promise((resolve, reject) => {
+      deleteRequest(`goods/${id}`)
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+    })
+  },
+
+  // 添加商品
+  addGoods(params) {
+    return new Promise((resolve, reject) => {
+      postRequest('goods', params)
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+    })
+  }
 }
