@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // axios 全局配置
 axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1/'
-axios.defaults.timeout = 10000
+axios.defaults.timeout = 100000
 
 // 请求拦截器,请求头添加token
 axios.interceptors.request.use(config => {
